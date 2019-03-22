@@ -9,6 +9,10 @@
 * 开发模式：`npm start`
 * 打包模式： `npm build`
 
+需要了解更多，请看：
+
+* [jsliang 的文档库](https://github.com/LiangJunrong/document-library)
+
 ---
 
 > **jsliang** 广告推送：  
