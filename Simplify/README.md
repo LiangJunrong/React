@@ -1,4 +1,4 @@
-简化项目
+React 系列 - 简化 create-react-app
 ===
 
 > Create by **jsliang** on **2019-3-22 11:16:34**  
