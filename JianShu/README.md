@@ -4,7 +4,7 @@ React 系列 - Demo Two - 简书
 > Create by **jsliang** on **2019-3-22 13:05:48**  
 > Recently revised in **2019-3-22 13:05:54**
 
-该项目是编写一个简书的网站
+尝试仿简书做了个项目：
 
 * 开发模式：`npm start`
 * 打包模式： `npm build`
