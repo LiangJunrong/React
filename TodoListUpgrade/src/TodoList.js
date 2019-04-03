@@ -15,6 +15,11 @@ class TodoList extends Component {
     super(props);
     console.log(store.getState());
     this.state = store.getState();
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+    // 3. 绑定处理 redux 返回回来的数据
+    this.handleStoreChange = this.handleStoreChange.bind(this);
+    store.subscribe(this.handleStoreChange);
   }
 
   render() {
@@ -24,7 +29,12 @@ class TodoList extends Component {
           <h1>TodoList</h1>
         </div>
         <div className="todo-action">
-          <Input placeholder='todo info' className="todo-input" value={this.state.inputValue} />
+          <Input 
+            placeholder='todo info' 
+            className="todo-input" 
+            value={this.state.inputValue} 
+            onChange={this.handleInputChange}
+          />
           <Button type="primary" className="todo-submit">提交</Button>
         </div>
         <div className="todo-list">
@@ -45,6 +55,21 @@ class TodoList extends Component {
       </div>
     );
   }
+
+  handleInputChange(e) {
+    // 1. 通过 Action，将数据传给 Store
+    const action = {
+      type: 'change_input_value',
+      value: e.target.value
+    }
+    store.dispatch(action);
+  }
+
+  // 4. 绑定的方法
+  handleStoreChange() {
+    this.setState(store.getState());
+  }
+
 }
 
 export default TodoList;

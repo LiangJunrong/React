@@ -5,6 +5,15 @@ const defaultState = {
   ]
 }
 
+// reducer 可以接收 state，但是绝不能修改 state
 export default (state = defaultState, action) => {
+  console.log(state);
+  console.log(action);
+  // 2. 在 reducer.js 中获取数据，并 return 返回回去
+  if(action.type === 'change_input_value') {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.inputValue = action.value;
+    return newState;
+  }
   return state;
 }
