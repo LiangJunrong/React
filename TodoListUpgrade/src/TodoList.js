@@ -1,18 +1,22 @@
+// 引用 React 及其组件
 import React, { Component } from 'react';
-
+// 引用 Antd
 import 'antd/dist/antd.css';
-
+// 引用主 CSS 文件
 import './index.css';
-
+// 引入 输入框、按钮、列表、头像
 import { Input, Button, List, Avatar } from 'antd';
+// 引入 redux（如果不写目录下的文件，默认引用 index.js）
+import store from './store';
 
-const data = [
-  { title: '第一条标题', description: '这是非常非常非常长的让人觉得不可思议的但是它语句通顺的第一条描述', },
-  { title: '第二条标题', description: '这是非常非常非常长的让人觉得不可思议的但是它语句通顺的第二条描述', },
-  { title: '第三条标题', description: '这是非常非常非常长的让人觉得不可思议的但是它语句通顺的第三条描述', },
-  { title: '第四条标题', description: '这是非常非常非常长的让人觉得不可思议的但是它语句通顺的第四条描述', },
-];
 class TodoList extends Component {
+
+  constructor(props) {
+    super(props);
+    console.log(store.getState());
+    this.state = store.getState();
+  }
+
   render() {
     return (
       <div className="todo">
@@ -20,13 +24,13 @@ class TodoList extends Component {
           <h1>TodoList</h1>
         </div>
         <div className="todo-action">
-          <Input placeholder='todo info' className="todo-input" />
+          <Input placeholder='todo info' className="todo-input" value={this.state.inputValue} />
           <Button type="primary" className="todo-submit">提交</Button>
         </div>
         <div className="todo-list">
           <List
             itemLayout="horizontal"
-            dataSource={data}
+            dataSource={this.state.list}
             renderItem={item => (
               <List.Item>
                 <List.Item.Meta
