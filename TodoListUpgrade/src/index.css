@@ -1,10 +1,17 @@
-.todo-list {
-  margin-top: 10px;
-  margin-left: 10px;
+.todo {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-left: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
-.todo-list-input {
+.todo-title {
+  text-align: center;
+}
+.todo-input {
   width: 200px;
 }
-.todo-list-button {
+.todo-submit {
   margin-left: 10px;
 }
