@@ -15,5 +15,12 @@ export default (state = defaultState, action) => {
     newState.inputValue = action.value;
     return newState;
   }
+  // 6. 接收 TodoList 传递过来的数据，并进行处理与返回
+  if(action.type === 'add_todo_item') {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list.push(newState.inputValue);
+    newState.inputValue = '';
+    return newState;
+  }
   return state;
 }

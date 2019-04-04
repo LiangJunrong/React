@@ -20,6 +20,8 @@ class TodoList extends Component {
     // 3. 绑定处理 redux 返回回来的数据
     this.handleStoreChange = this.handleStoreChange.bind(this);
     store.subscribe(this.handleStoreChange);
+
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   render() {
@@ -35,7 +37,13 @@ class TodoList extends Component {
             value={this.state.inputValue} 
             onChange={this.handleInputChange}
           />
-          <Button type="primary" className="todo-submit">提交</Button>
+          <Button 
+            type="primary" 
+            className="todo-submit"
+            onClick={this.handleButtonClick}
+          >
+            提交
+          </Button>
         </div>
         <div className="todo-list">
           <List
@@ -68,6 +76,14 @@ class TodoList extends Component {
   // 4. 绑定的方法
   handleStoreChange() {
     this.setState(store.getState());
+  }
+
+  handleButtonClick(e) {
+    // 5. 执行 Button 点击的流程
+    const action = {
+      type: 'add_todo_item'
+    };
+    store.dispatch(action);
   }
 
 }
