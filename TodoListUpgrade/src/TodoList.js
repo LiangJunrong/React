@@ -6,14 +6,13 @@ import 'antd/dist/antd.css';
 import './index.css';
 // 引入 输入框、按钮、列表、头像
 import { Input, Button, List, Avatar } from 'antd';
-// 引入 redux（如果不写目录下的文件，默认引用 index.js）
+// 引入 Redux（如果不写目录下的文件，默认引用 index.js）
 import store from './store';
 
 class TodoList extends Component {
 
   constructor(props) {
     super(props);
-    console.log(store.getState());
     this.state = store.getState();
     this.handleInputChange = this.handleInputChange.bind(this);
 
@@ -22,6 +21,7 @@ class TodoList extends Component {
     store.subscribe(this.handleStoreChange);
 
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleInputKeyUp = this.handleInputKeyUp.bind(this);
   }
 
   render() {
@@ -36,6 +36,7 @@ class TodoList extends Component {
             className="todo-input" 
             value={this.state.inputValue} 
             onChange={this.handleInputChange}
+            onKeyUp={this.handleInputKeyUp}
           />
           <Button 
             type="primary" 
@@ -58,7 +59,7 @@ class TodoList extends Component {
                 />
               </List.Item>
             )}
-          />,
+          />
         </div>
       </div>
     );
@@ -84,6 +85,12 @@ class TodoList extends Component {
       type: 'add_todo_item'
     };
     store.dispatch(action);
+  }
+
+  handleInputKeyUp(e) {
+    if(e.keyCode === 13) {
+      this.handleButtonClick();
+    }
   }
 
 }
