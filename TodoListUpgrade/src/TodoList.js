@@ -8,8 +8,8 @@ import './index.css';
 import { Input, Button, List, Avatar } from 'antd';
 // 引入 Redux（如果不写目录下的文件，默认引用 index.js）
 import store from './store';
-// 引入 actionTypes
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes'
+// 引入 actionCreators.js
+import { getInputChangeAction, getAddItemAction, getItemDeleteAction } from './store/actionCreators'
 
 class TodoList extends Component {
 
@@ -22,7 +22,7 @@ class TodoList extends Component {
     this.handleStoreChange = this.handleStoreChange.bind(this);
     store.subscribe(this.handleStoreChange);
 
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
     this.handleInputKeyUp = this.handleInputKeyUp.bind(this);
   }
 
@@ -43,7 +43,7 @@ class TodoList extends Component {
           <Button 
             type="primary" 
             className="todo-submit"
-            onClick={this.handleButtonClick}
+            onClick={this.handleAddItem}
           >
             提交
           </Button>
@@ -69,10 +69,7 @@ class TodoList extends Component {
 
   handleInputChange(e) {
     // 1. 通过 Action，将数据传给 Store
-    const action = {
-      type: CHANGE_INPUT_VALUE,
-      value: e.target.value
-    }
+    const action = getInputChangeAction(e.target.value);
     store.dispatch(action);
   }
 
@@ -81,25 +78,20 @@ class TodoList extends Component {
     this.setState(store.getState());
   }
 
-  handleButtonClick(e) {
+  handleAddItem(e) {
     // 5. 执行 Button 点击的流程
-    const action = {
-      type: ADD_TODO_ITEM
-    };
+    const action = getAddItemAction();
     store.dispatch(action);
   }
 
   handleInputKeyUp(e) {
     if(e.keyCode === 13) {
-      this.handleButtonClick();
+      this.handleAddItem();
     }
   }
 
   handleItemDelete(index) {
-    const action = {
-      type: DELETE_TODO_ITEM,
-      index
-    }
+    const action = getItemDeleteAction(index);
     store.dispatch(action);
   }
 
