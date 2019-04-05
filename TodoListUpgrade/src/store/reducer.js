@@ -9,9 +9,12 @@ const defaultState = {
 }
 
 // reducer 可以接收 state，但是绝不能修改 state
+// 纯函数指的是，给定固定的输入，就一定会有固定的输出，而且不会有任何副作用
 export default (state = defaultState, action) => {
   // 2. 在 reducer.js 中获取数据，并 return 返回回去
   if(action.type === CHANGE_INPUT_VALUE) {
+    // JSON.parse(JSON.stringify(state)) 是一种深拷贝，但是这种深拷贝对一些类型无效，详情可看： 
+    // https://github.com/LiangJunrong/document-library/blob/master/other-library/Interview/PersonalExperience/2019-InterviewPreparation.md#chapter-five-five
     const newState = JSON.parse(JSON.stringify(state));
     newState.inputValue = action.value;
     return newState;
