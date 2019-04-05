@@ -1,3 +1,6 @@
+// 引入 actionTypes
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+
 const defaultState = {
   inputValue: '',
   list: [
@@ -8,13 +11,13 @@ const defaultState = {
 // reducer 可以接收 state，但是绝不能修改 state
 export default (state = defaultState, action) => {
   // 2. 在 reducer.js 中获取数据，并 return 返回回去
-  if(action.type === 'change_input_value') {
+  if(action.type === CHANGE_INPUT_VALUE) {
     const newState = JSON.parse(JSON.stringify(state));
     newState.inputValue = action.value;
     return newState;
   }
   // 6. 接收 TodoList 传递过来的数据，并进行处理与返回
-  if(action.type === 'add_todo_item') {
+  if(action.type === ADD_TODO_ITEM) {
     const newState = JSON.parse(JSON.stringify(state));
     let newList = {
       title: newState.inputValue,
@@ -22,6 +25,11 @@ export default (state = defaultState, action) => {
     };
     newState.list.push(newList);
     newState.inputValue = '';
+    return newState;
+  }
+  if(action.type === DELETE_TODO_ITEM) {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list.splice(action.index, 1);
     return newState;
   }
   return state;

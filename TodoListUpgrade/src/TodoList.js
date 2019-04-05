@@ -8,6 +8,8 @@ import './index.css';
 import { Input, Button, List, Avatar } from 'antd';
 // 引入 Redux（如果不写目录下的文件，默认引用 index.js）
 import store from './store';
+// 引入 actionTypes
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes'
 
 class TodoList extends Component {
 
@@ -50,8 +52,8 @@ class TodoList extends Component {
           <List
             itemLayout="horizontal"
             dataSource={this.state.list}
-            renderItem={item => (
-              <List.Item>
+            renderItem={(item, index) => (
+              <List.Item onClick={this.handleItemDelete.bind(this, index)}>
                 <List.Item.Meta
                   avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                   title={<a href="http://jsliang.top">{item.title}</a>}
@@ -68,7 +70,7 @@ class TodoList extends Component {
   handleInputChange(e) {
     // 1. 通过 Action，将数据传给 Store
     const action = {
-      type: 'change_input_value',
+      type: CHANGE_INPUT_VALUE,
       value: e.target.value
     }
     store.dispatch(action);
@@ -82,7 +84,7 @@ class TodoList extends Component {
   handleButtonClick(e) {
     // 5. 执行 Button 点击的流程
     const action = {
-      type: 'add_todo_item'
+      type: ADD_TODO_ITEM
     };
     store.dispatch(action);
   }
@@ -91,6 +93,14 @@ class TodoList extends Component {
     if(e.keyCode === 13) {
       this.handleButtonClick();
     }
+  }
+
+  handleItemDelete(index) {
+    const action = {
+      type: DELETE_TODO_ITEM,
+      index
+    }
+    store.dispatch(action);
   }
 
 }
