@@ -1,5 +1,5 @@
 // 引入 actionTypes
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes'
 
 const defaultState = {
   inputValue: '',
@@ -11,7 +11,7 @@ const defaultState = {
 // reducer 可以接收 state，但是绝不能修改 state
 // 纯函数指的是，给定固定的输入，就一定会有固定的输出，而且不会有任何副作用
 export default (state = defaultState, action) => {
-  // 2. 在 reducer.js 中获取数据，并 return 返回回去
+  // 在 reducer.js 中获取数据，并 return 返回回去
   if(action.type === CHANGE_INPUT_VALUE) {
     // JSON.parse(JSON.stringify(state)) 是一种深拷贝，但是这种深拷贝对一些类型无效，详情可看： 
     // https://github.com/LiangJunrong/document-library/blob/master/other-library/Interview/PersonalExperience/2019-InterviewPreparation.md#chapter-five-five
@@ -19,7 +19,7 @@ export default (state = defaultState, action) => {
     newState.inputValue = action.value;
     return newState;
   }
-  // 6. 接收 TodoList 传递过来的数据，并进行处理与返回
+  // 接收 TodoList 传递过来的数据，并进行处理与返回
   if(action.type === ADD_TODO_ITEM) {
     const newState = JSON.parse(JSON.stringify(state));
     let newList = {
@@ -33,6 +33,12 @@ export default (state = defaultState, action) => {
   if(action.type === DELETE_TODO_ITEM) {
     const newState = JSON.parse(JSON.stringify(state));
     newState.list.splice(action.index, 1);
+    return newState;
+  }
+  // 8. 接受 TodoList 传递过来的数据，并进行处理与返回
+  if(action.type === INIT_LIST_ACTION) {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list = action.data;
     return newState;
   }
   return state;

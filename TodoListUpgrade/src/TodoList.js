@@ -2,9 +2,12 @@ import React, { Component } from 'react'; // 引用 React 及其组件
 import 'antd/dist/antd.css'; // 引用 Antd
 import './index.css'; // 引用主 CSS 文件
 import store from './store'; // 引入 Redux（如果不写目录下的文件，默认引用 index.js）
-import { getInputChangeAction, getAddItemAction, getItemDeleteAction } from './store/actionCreators' // 引入 actionCreators.js
-// 1. 引入 TodoListUI
-import TodoListUI from './TodoListUI';
+
+// 7. 引入 initListAction
+import { getInputChangeAction, getAddItemAction, getItemDeleteAction, initListAction } from './store/actionCreators' // 引入 actionCreators.js
+import TodoListUI from './TodoListUI'; // 引入 TodoListUI
+// 1. 引入 axios
+import axios from 'axios'
 
 class TodoList extends Component {
 
@@ -30,6 +33,17 @@ class TodoList extends Component {
         handleItemDelete = {this.handleItemDelete}
       />
     );
+  }
+
+  componentDidMount() {
+    // 2. 调用接口
+    axios.get('https://www.easy-mock.com/mock/5ca803587e5a246db3d100cb/todolist').then( (res) => {
+      console.log(res.data.todolist);
+      // 3. 将接口数据 dispatch 到 action 中，所以需要先前往 actionCreators.js 中创建 action
+      // 7. 创建 action 并 dispatch 到 reducer.js 中
+      const action = initListAction(res.data.todolist);
+      store.dispatch(action);
+    })
   }
 
   handleInputChange(e) { // input 输入数据
