@@ -1,0 +1,19 @@
+.todo {
+  width: 1000px;
+  margin: 20px auto 0;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.todo-title {
+  text-align: center;
+}
+.todo-action .todo-input {
+  width: 200px;
+}
+.todo-action .todo-submit {
+  margin-left: 10px;
+}
+.todo-list {
+  margin-top: 30px;
+}
