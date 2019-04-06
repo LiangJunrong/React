@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './index.css';
 import 'antd/dist/antd.css';
 import store from './store';
-import { getChangeInputValue, getAddTodoItem, getDeleteTodoItem, initListAction } from './store/actionCreators';
+// 1. 删除 initListAction 以及下面的 axios，并引入 actionCreators.js 中的 getInitList
+import { getChangeInputValue, getAddTodoItem, getDeleteTodoItem, getInitList } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
-import axios from 'axios';
 
 class TodoList extends Component {
 
@@ -34,10 +34,9 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://www.easy-mock.com/mock/5ca803587e5a246db3d100cb/todolist').then( (res) => {
-      const action = initListAction(res.data.todolist);
-      store.dispatch(action);
-    })
+    // 5. 调用 getInitList，并使用 dispatch 将 action 派发出去。这时候不仅 reducer.js 可以接收到这个 action，我们的 sagas.js 也可以接收到这个 action。
+    const action = getInitList();
+    store.dispatch(action);
   }
 
   handleInputChange(e) {
