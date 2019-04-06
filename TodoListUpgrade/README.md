@@ -2,25 +2,22 @@ React 系列 - Demo Two - TodoList 升级
 ===
 
 > Create by **jsliang** on **2019-3-26 10:23:47**  
-> Recently revised in **2019-4-6 10:32:50**
+> Recently revised in **2019-4-6 11:46:38**
 
-我们对 TodoList 进行了 Redux 升级：
+我们对 TodoList 进行了 Redux 升级，该份文件夹下有四个目录：
+
+* Redux-Base —— 记录 Redux 基础内容
+* Redux-Thunk —— 在 Redux-Base 基础上进行 `redux-thunk` 的中间件配置
+* Redux-Saga —— 在 Redux-Base 基础上进行 `redux-saga` 的中间件配置
+* React-Redux —— 对 TodoList 进行 `react-redux` 重新改造
+
+它们的打开方式是：
 
 * 安装依赖：`npm i`
 * 开发模式：`npm start`
 * 打包模式： `npm build`
 
-同时，我们拥有三个分支：
-
-* `Redux-Thunk`：使用 redux-thunk 中间件进行接口管理
-* `Redux-Saga`：使用 redux-saga 中间件进行接口管理
-* `React-Redux`：使用 react-redux 进行 React 与 Redux 的管理调配
-
-如果是 GitHub 上，可以切换分支进行查看；
-
-如果是本地，也可以切换查看。
-
-需要了解更多，请看：
+需要了解更多，请前往下面链接进行查看：
 
 * [jsliang 的文档库](https://github.com/LiangJunrong/document-library)
 
