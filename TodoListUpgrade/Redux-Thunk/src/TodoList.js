@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './index.css';
 import 'antd/dist/antd.css';
 import store from './store';
-import { getChangeInputValue, getAddTodoItem, getDeleteTodoItem, initListAction } from './store/actionCreators';
+// 4. 在 TodoList.js 中引用 actionCreators.js 中的 getTodoList，并去除没再引用的 initListAction
+import { getChangeInputValue, getAddTodoItem, getDeleteTodoItem, getTodoList } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
-import axios from 'axios';
 
 class TodoList extends Component {
 
@@ -34,10 +34,10 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://www.easy-mock.com/mock/5ca803587e5a246db3d100cb/todolist').then( (res) => {
-      const action = initListAction(res.data.todolist);
-      store.dispatch(action);
-    })
+    // 5. 在 componentDidMount 中调用 getTodoList。如果我们没使用 redux-thunk，我们只能使用对象，但是现在我们可以使用函数了。
+    const action = getTodoList();
+    // 6. 当我们 dispatch 了 action 的时候，我们就调用了步骤 1 的 getTodoList()，从而获取了数据
+    store.dispatch(action);
   }
 
   handleInputChange(e) {
