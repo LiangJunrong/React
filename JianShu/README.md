@@ -1,10 +1,10 @@
 React 系列 - Demo Two - 简书
 ===
 
-> Create by **jsliang** on **2019-3-22 13:05:48**  
-> Recently revised in **2019-3-22 13:05:54**
+> Create by **jsliang** on **2019-3-22 11:16:34**  
+> Recently revised in **2019-4-7 19:45:38**
 
-尝试仿简书做了个项目：
+该项目是简书网站的仿建：
 
 * 开发模式：`npm start`
 * 打包模式： `npm build`
