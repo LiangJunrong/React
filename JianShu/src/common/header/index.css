@@ -30,7 +30,6 @@ header {
 .header_center-left-search {
   position: relative;
 }
-/* 3. 编写对应的 CSS 样式 */
 .slide-enter {
   transition: all .2s ease-out;
 }
@@ -43,7 +42,6 @@ header {
 .silde-exit-active {
   width: 240px;
 }
-/* 3. 结束 */
 .header_center-left-search input {
   width: 240px;
   padding: 0 40px 0 20px;

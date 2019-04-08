@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// 1. 引入动画库
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
 
@@ -34,7 +33,6 @@ class Header extends Component {
               <span>下载App</span>
             </div>
             <div className="nav-item header_center-left-search">
-              {/* 2. 通过 CSSTransition 包裹 input */}
               <CSSTransition
                 in={this.state.inputBlur}
                 timeout={200}
