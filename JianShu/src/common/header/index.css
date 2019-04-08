@@ -47,6 +47,15 @@ header {
   top: 8px;
   right: 10px;
 }
+.header_center-left-search .icon-active {
+  padding: 3px;
+  top: 4px;
+  border-radius: 15px;
+  border: 1px solid #ea6f5a;
+}
+.header_center-left-search .icon-active:hover {
+  cursor: pointer;
+}
 .header_center-right {
   display: flex;
   color: #969696;

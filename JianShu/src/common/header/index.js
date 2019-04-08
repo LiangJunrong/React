@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import './index.css';
 
 import homeImage from '../../resources/img/header-home.png';
@@ -31,13 +32,18 @@ class Header extends Component {
               <span>下载App</span>
             </div>
             <div className="nav-item header_center-left-search">
-              <input 
-                className={this.state.inputFocus ? 'input-nor-active' : 'input-active'}
-                placeholder="搜索"
-                onFocus={this.searchFocusOrBlur}
-                onBlur={this.searchFocusOrBlur}
-              />
-              <i className="icon icon-search"></i>
+              <CSSTransition
+                in={this.state.inputFocus}
+                timeout={200}
+              >
+                <input 
+                  className={this.state.inputFocus ? 'input-nor-active' : 'input-active'}
+                  placeholder="搜索"
+                  onFocus={this.searchFocusOrBlur}
+                  onBlur={this.searchFocusOrBlur}
+                />
+              </CSSTransition>
+              <i className={this.state.inputFocus ? 'icon icon-search' : 'icon icon-search icon-active'}></i>
             </div>
           </div>
           <div className="header_center-right">

@@ -6,7 +6,8 @@
     "antd": "^3.16.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-transition-group": "^2.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
