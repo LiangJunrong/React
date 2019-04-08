@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+// 1. 引入动画库
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
 
 import homeImage from '../../resources/img/header-home.png';
+
 class Header extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      inputFocus: true
+      inputBlur: true
     }
     this.searchFocusOrBlur = this.searchFocusOrBlur.bind(this);
   }
@@ -32,18 +34,20 @@ class Header extends Component {
               <span>下载App</span>
             </div>
             <div className="nav-item header_center-left-search">
+              {/* 2. 通过 CSSTransition 包裹 input */}
               <CSSTransition
-                in={this.state.inputFocus}
+                in={this.state.inputBlur}
                 timeout={200}
+                classNames="slide"
               >
                 <input 
-                  className={this.state.inputFocus ? 'input-nor-active' : 'input-active'}
+                  className={this.state.inputBlur ? 'input-nor-active' : 'input-active'}
                   placeholder="搜索"
                   onFocus={this.searchFocusOrBlur}
                   onBlur={this.searchFocusOrBlur}
                 />
               </CSSTransition>
-              <i className={this.state.inputFocus ? 'icon icon-search' : 'icon icon-search icon-active'}></i>
+              <i className={this.state.inputBlur ? 'icon icon-search' : 'icon icon-search icon-active'}></i>
             </div>
           </div>
           <div className="header_center-right">
@@ -67,9 +71,9 @@ class Header extends Component {
   }
 
   searchFocusOrBlur(e) {
-    const inputFocus = this.state.inputFocus;
+    const inputBlur = this.state.inputBlur;
     this.setState( () => ({
-      inputFocus: !inputFocus
+      inputBlur: !inputBlur
     }))
   }
 
