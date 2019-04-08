@@ -1,12 +1,9 @@
-const defaultState = {
-  inputBlur: true
-};
+// 2. 通过 combineReducers 整合多个 reducer.js 文件
+import { combineReducers } from 'redux';
+import headerReducer from '../common/header/store/reducer';
 
-export default (state = defaultState, action) => {
-  if(action.type === 'search_focus') {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState.inputBlur = !newState.inputBlur
-    return newState;
-  }
-  return state;
-}
+const reducer =  combineReducers({
+  header: headerReducer
+})
+
+export default reducer;

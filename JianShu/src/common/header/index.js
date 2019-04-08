@@ -61,7 +61,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    inputBlur: state.inputBlur
+    // 3. 因为引用的层级变了，所以需要修改 state.inputBlur 为 state.header.inputBlue
+    inputBlur: state.header.inputBlur
   }
 }
 
