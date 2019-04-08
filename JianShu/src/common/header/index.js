@@ -2,9 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
-// 2. 以 actionCreators 的形式将所有 action 引入进来
-// import * as actionCreators from './store/actionCreators';
-// 9. 引入 store/index 文件即可
 import { actionCreators } from './store';
 
 import homeImage from '../../resources/img/header-home.png';
@@ -72,7 +69,6 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
   return {
     searchFocusOrBlur() {
-      // 3. 使用 actionCreators
       dispatch(actionCreators.searchFocusOrBlur());
     }
   }
