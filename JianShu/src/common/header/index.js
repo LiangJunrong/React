@@ -62,7 +62,6 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    // 2. 通过同样的 get 方法来获取 header
     inputBlur: state.get('header').get('inputBlur')
   }
 }
