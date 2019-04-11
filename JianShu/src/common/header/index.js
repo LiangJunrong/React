@@ -88,6 +88,8 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
   return {
     searchFocusOrBlur() {
+      // 4. 派发 action 到 actionCreators.js 中的 getList() 方法
+      dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocusOrBlur());
     }
   }
