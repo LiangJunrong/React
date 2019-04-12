@@ -48,12 +48,11 @@ class Header extends Component {
                   </span>
                 </div>
                 <div className="header_center-left-hot-search-content">
-                  <span>考研</span>
-                  <span>慢死人</span>
-                  <span>悦心</span>
-                  <span>一致</span>
-                  <span>是的</span>
-                  <span>jsliang</span>
+                  {
+                    this.props.list.map((item) => {
+                      return <span key={item}>{item}</span>
+                    })
+                  }
                 </div>
               </div>
             </div>
@@ -81,14 +80,14 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    inputBlur: state.get('header').get('inputBlur')
+    inputBlur: state.get('header').get('inputBlur'),
+    list: state.get('header').get('list')
   }
 }
 
 const mapDispathToProps = (dispatch) => {
   return {
     searchFocusOrBlur() {
-      // 4. 派发 action 到 actionCreators.js 中的 getList() 方法
       dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocusOrBlur());
     }

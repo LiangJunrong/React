@@ -1,13 +1,27 @@
 import * as actionTypes from './actionTypes'
+import axios from 'axios';
+import { fromJS } from 'immutable';
 
 export const searchFocusOrBlur = () => ({
   type: actionTypes.SEARCH_FOCUS_OR_BLUR
 })
 
-// 5. 编写 getList 的 action，由于需要 actionTypes 中定义，所以前往 actionTypes.js 中新增
-export const getList = () => ({
-  return (dispatch) => {
-    // 7. 未完待续
-    type: actionTypes.GET_LIST
-  }
+const changeList = (data) => ({
+  type: actionTypes.GET_LIST,
+  data: fromJS(data)
 })
+
+export const getList = () => {
+  return (dispatch) => {
+    axios.get('/api/headerList.json').then( (res) => {
+      if(res.data.code === 0) {
+        const data = res.data.list;
+        // 由于数据太多，我们限制数据量为 15 先
+        data.length = 15;
+        dispatch(changeList(data));
+      }
+    }).catch( (error) => {
+      console.log(error);
+    });
+  }
+}
