@@ -123,6 +123,9 @@ header {
 .icon-change:hover {
   cursor: pointer;
 }
+.span-change:hover {
+  cursor: pointer;
+}
 .header_center-left-hot-search-content span {
   display: inline-block;
   margin-top: 10px;

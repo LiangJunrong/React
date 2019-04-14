@@ -39,24 +39,29 @@ class Header extends Component {
                 />
               </CSSTransition>
               <i className={this.props.inputFocus ? 'icon icon-search icon-active' : 'icon icon-search'}></i>
-              {/* 8. 在判断中加多一个 this.props.mouseInHot，这样只要有一个为 true，它就不会消失 */}
               <div 
                 className={this.props.inputFocus || this.props.mouseInHot ? 'display-show header_center-left-hot-search' : 'display-hide header_center-left-hot-search'}
-                // 2. 设置移入为 onMouseEnterHot，移出为 onMouseLeaveHot
                 onMouseEnter={this.props.onMouseEnterHot}
                 onMouseLeave={this.props.onMouseLeaveHot}
               >
                 <div className="header_center-left-hot-search-title">
                   <span>热门搜索</span>
-                  <span>
+                  {/* 7. 进行换页功能实现，传递参数 page 和 totalPage */}
+                  <span onClick={() => this.props.changePage(this.props.page, this.props.totalPage)}>
                     <i className="icon-change"></i>
-                    <span>换一批</span>
+                    <span className="span-change">换一批</span>
                   </span>
                 </div>
                 <div className="header_center-left-hot-search-content">
                   {
-                    this.props.list.map((item) => {
-                      return <span key={item}>{item}</span>
+                    // 6. 在 index.js 中进行计算：
+                    // 一开始显示 0-9 共 10 条，换页的时候显示 10-19 ……以此类推
+                    this.props.list.map((item, index) => {
+                      if(index >= (this.props.page - 1) * 10 && index < this.props.page * 10) {
+                        return <span key={item}>{item}</span>
+                      } else {
+                        return '';
+                      }
                     })
                   }
                 </div>
@@ -88,8 +93,10 @@ const mapStateToProps = (state) => {
   return {
     inputFocus: state.get('header').get('inputFocus'),
     list: state.get('header').get('list'),
-    // 7. 在 index.js 中获取
     mouseInHot: state.get('header').get('mouseInHot'),
+    // 5. 在 index.js 中 mapStateToProps 获取数据
+    page: state.get('header').get('page'),
+    totalPage: state.get('header').get('totalPage'),
   }
 }
 
@@ -102,13 +109,21 @@ const mapDispathToProps = (dispatch) => {
     searchBlur() {
       dispatch(actionCreators.searchBlur());
     },
-    // 3. 定义 onMouseEnterHot 和 onMouseLeaveHot 方法
     onMouseEnterHot() {
       dispatch(actionCreators.onMouseEnterHot());
     },
     onMouseLeaveHot() {
       dispatch(actionCreators.onMouseLeaveHot());
     },
+    // 8. 调用 changePage 方法
+    changePage(page, totalPage) {
+      if(page === totalPage) {
+        page = 1;
+        dispatch(actionCreators.changePage(page));
+      } else {
+        dispatch(actionCreators.changePage(page));
+      }
+    }
   }
 }
 
