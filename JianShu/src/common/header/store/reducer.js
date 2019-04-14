@@ -7,11 +7,12 @@ const defaultState = fromJS({
 });
 
 export default (state = defaultState, action) => {
-  if(action.type === actionTypes.SEARCH_FOCUS_OR_BLUR) {
-    return state.set('inputBlur', !state.get('inputBlur'));
+  switch(action.type) {
+    case actionTypes.SEARCH_FOCUS_OR_BLUR:
+      return state.set('inputBlur', !state.get('inputBlur'));
+    case actionTypes.GET_LIST:
+      return state.set('list', action.data);
+    default:
+      return state;
   }
-  if(action.type === actionTypes.GET_LIST) {
-    return state.set('list', action.data);
-  }
-  return state;
 }
