@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import List from './components/List';
+import Recommend from './components/Recommend';
 
 class Home extends Component {
   render() {
     return (
-      <div>Home</div>
+      <div>
+        <List/>
+        <Recommend/>
+      </div>
     )
   }
 }
