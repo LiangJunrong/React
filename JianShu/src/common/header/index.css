@@ -119,6 +119,8 @@ header {
   height: 14px;
   background: url('../../resources/img/icon-change.png') no-repeat center;
   background-size: 100%;
+  transition: all .2s ease-in;
+  transform-origin: center center;
 }
 .icon-change:hover {
   cursor: pointer;

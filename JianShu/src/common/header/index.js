@@ -34,7 +34,8 @@ class Header extends Component {
                 <input 
                   className={this.props.inputFocus ? 'input-active' : 'input-nor-active'}
                   placeholder="搜索"
-                  onFocus={this.props.searchFocus}
+                  // 1. 给 searchFocus 传递 list
+                  onFocus={() => this.props.searchFocus(this.props.list)}
                   onBlur={this.props.searchBlur}
                 />
               </CSSTransition>
@@ -46,16 +47,13 @@ class Header extends Component {
               >
                 <div className="header_center-left-hot-search-title">
                   <span>热门搜索</span>
-                  {/* 7. 进行换页功能实现，传递参数 page 和 totalPage */}
-                  <span onClick={() => this.props.changePage(this.props.page, this.props.totalPage)}>
-                    <i className="icon-change"></i>
+                  <span onClick={() => this.props.changePage(this.props.page, this.props.totalPage, this.spinIcon)}>
+                    <i className="icon-change" ref={(icon) => {this.spinIcon = icon}}></i>
                     <span className="span-change">换一批</span>
                   </span>
                 </div>
                 <div className="header_center-left-hot-search-content">
                   {
-                    // 6. 在 index.js 中进行计算：
-                    // 一开始显示 0-9 共 10 条，换页的时候显示 10-19 ……以此类推
                     this.props.list.map((item, index) => {
                       if(index >= (this.props.page - 1) * 10 && index < this.props.page * 10) {
                         return <span key={item}>{item}</span>
@@ -94,7 +92,6 @@ const mapStateToProps = (state) => {
     inputFocus: state.get('header').get('inputFocus'),
     list: state.get('header').get('list'),
     mouseInHot: state.get('header').get('mouseInHot'),
-    // 5. 在 index.js 中 mapStateToProps 获取数据
     page: state.get('header').get('page'),
     totalPage: state.get('header').get('totalPage'),
   }
@@ -102,8 +99,11 @@ const mapStateToProps = (state) => {
 
 const mapDispathToProps = (dispatch) => {
   return {
-    searchFocus() {
-      dispatch(actionCreators.getList());
+    searchFocus(list) {
+      // 2. 判断 list 的 size 是不是等于 0，是的话才请求数据（第一次），不是的话则不请求
+      if(list.size === 0) {
+        dispatch(actionCreators.getList());
+      }
       dispatch(actionCreators.searchFocus());
     },
     searchBlur() {
@@ -115,8 +115,12 @@ const mapDispathToProps = (dispatch) => {
     onMouseLeaveHot() {
       dispatch(actionCreators.onMouseLeaveHot());
     },
-    // 8. 调用 changePage 方法
-    changePage(page, totalPage) {
+    changePage(page, totalPage, spinIcon) {
+      if(spinIcon.style.transform === 'rotate(360deg)') {
+        spinIcon.style.transform = 'rotate(0deg)';
+      } else {
+        spinIcon.style.transform = 'rotate(360deg)';
+      }
       if(page === totalPage) {
         page = 1;
         dispatch(actionCreators.changePage(page));
