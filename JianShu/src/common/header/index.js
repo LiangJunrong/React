@@ -27,19 +27,25 @@ class Header extends Component {
             </div>
             <div className="nav-item header_center-left-search">
               <CSSTransition
-                in={this.props.inputBlur}
+                in={this.props.inputFocus}
                 timeout={200}
                 classNames="slide"
               >
                 <input 
-                  className={this.props.inputBlur ? 'input-nor-active' : 'input-active'}
+                  className={this.props.inputFocus ? 'input-active' : 'input-nor-active'}
                   placeholder="搜索"
-                  onFocus={this.props.searchFocusOrBlur}
-                  onBlur={this.props.searchFocusOrBlur}
+                  onFocus={this.props.searchFocus}
+                  onBlur={this.props.searchBlur}
                 />
               </CSSTransition>
-              <i className={this.props.inputBlur ? 'icon icon-search' : 'icon icon-search icon-active'}></i>
-              <div className={this.props.inputBlur ? 'display-hide header_center-left-hot-search' : 'display-show header_center-left-hot-search'}>
+              <i className={this.props.inputFocus ? 'icon icon-search icon-active' : 'icon icon-search'}></i>
+              {/* 8. 在判断中加多一个 this.props.mouseInHot，这样只要有一个为 true，它就不会消失 */}
+              <div 
+                className={this.props.inputFocus || this.props.mouseInHot ? 'display-show header_center-left-hot-search' : 'display-hide header_center-left-hot-search'}
+                // 2. 设置移入为 onMouseEnterHot，移出为 onMouseLeaveHot
+                onMouseEnter={this.props.onMouseEnterHot}
+                onMouseLeave={this.props.onMouseLeaveHot}
+              >
                 <div className="header_center-left-hot-search-title">
                   <span>热门搜索</span>
                   <span>
@@ -80,17 +86,29 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    inputBlur: state.get('header').get('inputBlur'),
-    list: state.get('header').get('list')
+    inputFocus: state.get('header').get('inputFocus'),
+    list: state.get('header').get('list'),
+    // 7. 在 index.js 中获取
+    mouseInHot: state.get('header').get('mouseInHot'),
   }
 }
 
 const mapDispathToProps = (dispatch) => {
   return {
-    searchFocusOrBlur() {
+    searchFocus() {
       dispatch(actionCreators.getList());
-      dispatch(actionCreators.searchFocusOrBlur());
-    }
+      dispatch(actionCreators.searchFocus());
+    },
+    searchBlur() {
+      dispatch(actionCreators.searchBlur());
+    },
+    // 3. 定义 onMouseEnterHot 和 onMouseLeaveHot 方法
+    onMouseEnterHot() {
+      dispatch(actionCreators.onMouseEnterHot());
+    },
+    onMouseLeaveHot() {
+      dispatch(actionCreators.onMouseLeaveHot());
+    },
   }
 }
 

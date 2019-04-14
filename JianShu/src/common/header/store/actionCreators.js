@@ -2,13 +2,21 @@ import * as actionTypes from './actionTypes'
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-export const searchFocusOrBlur = () => ({
-  type: actionTypes.SEARCH_FOCUS_OR_BLUR
+export const searchFocus = () => ({
+  type: actionTypes.SEARCH_FOCUS
 })
 
-const changeList = (data) => ({
-  type: actionTypes.GET_LIST,
-  data: fromJS(data)
+export const searchBlur = () => ({
+  type: actionTypes.SEARCH_BLUR
+})
+
+// 4. 在 actionCreators.js 中定义这两个方法：onMouseEnterHot 和 onMouseLeaveHot
+export const onMouseEnterHot = () => ({
+  type: actionTypes.ON_MOUSE_ENTER_HOT,
+})
+
+export const onMouseLeaveHot = () => ({
+  type: actionTypes.ON_MOUSE_LEAVE_HOT,
 })
 
 export const getList = () => {
@@ -25,3 +33,8 @@ export const getList = () => {
     });
   }
 }
+
+const changeList = (data) => ({
+  type: actionTypes.GET_LIST,
+  data: fromJS(data)
+})
