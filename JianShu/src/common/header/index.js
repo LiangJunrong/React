@@ -34,7 +34,6 @@ class Header extends Component {
                 <input 
                   className={this.props.inputFocus ? 'input-active' : 'input-nor-active'}
                   placeholder="搜索"
-                  // 1. 给 searchFocus 传递 list
                   onFocus={() => this.props.searchFocus(this.props.list)}
                   onBlur={this.props.searchBlur}
                 />
@@ -100,7 +99,6 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
   return {
     searchFocus(list) {
-      // 2. 判断 list 的 size 是不是等于 0，是的话才请求数据（第一次），不是的话则不请求
       if(list.size === 0) {
         dispatch(actionCreators.getList());
       }
