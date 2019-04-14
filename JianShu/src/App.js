@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Header from './common/header';
 import store from './store';
-// 1. 引入 React 路由的 BrowserRouter 和 Route
 import { BrowserRouter, Route } from 'react-router-dom';
+// 1. 引入 Home、Detail 组件
+import Home from './pages/home';
+import Detail from './pages/detail';
 
 class App extends Component {
   render() {
     return (
       <Provider store={store} className="App">
         <Header />
-        {/* 2. 在页面中使用 React 路由 */}
         <BrowserRouter>
-          <Route path="/" exact render={() => <div>HOME</div>}></Route>
-          <Route path="/detail" exact render={() => <div>DETAIL</div>}></Route>
+          {/* 2. 在页面中引用组件 */}
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/detail" exact component={Detail}></Route>
         </BrowserRouter>
       </Provider>
     );
