@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
-import List from './components/List';
-import Recommend from './components/Recommend';
+import React, { Component } from 'react';
+import LeftList from './components/LeftList';
+import RightRecommend from './components/RightRecommend';
+import TopNav from './components/TopNav';
+import './index.css';
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <List/>
-        <Recommend/>
+      <div className="container">
+        <TopNav />
+        <div className="main-container">
+          <LeftList />
+          <RightRecommend />
+        </div>
       </div>
     )
   }
