@@ -7,14 +7,14 @@ class LeftList extends Component {
       <div className="left-list">
         <div className="left-list-top">
           <ul className="left-list-top-left">
-            <li>
+            <li className="active">
               <Link to='remen'>热门</Link>
             </li>
-            |
+            <span>|</span>
             <li>
               <Link to='zuixin'>最新</Link>
             </li>
-            |
+            <span>|</span>
             <li>
               <Link to='pinglun'>评论</Link>
             </li>
@@ -34,7 +34,7 @@ class LeftList extends Component {
           </ul>
         </div>
         <div className="left-list-container">
-          
+
         </div>
       </div>
     )
