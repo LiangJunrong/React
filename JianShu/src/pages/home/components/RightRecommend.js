@@ -21,8 +21,16 @@ class RightRecommend extends Component {
             <div className="right-recommend-author-item">
               <img alt="头像" src="https://lc-gold-cdn.xitu.io/ada965bd605a3b55371b.jpg?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
               <div className="right-recommend-author-detail">
-                <span className="right-recommend-author-title">纳兰不是容若</span>
-                <span>前端开发</span>
+                <span className="right-recommend-author-title">前端先锋</span>
+                <span>前端码农</span>
+                <span>前端、JavaScript、Node.js 领域贡献者</span>
+              </div>
+            </div>
+            <div className="right-recommend-author-item">
+              <img alt="头像" src="https://user-gold-cdn.xitu.io/2017/12/25/1608cf4df88d2841?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
+              <div className="right-recommend-author-detail">
+                <span className="right-recommend-author-title">HulkShen</span>
+                <span>前端工程师 @ 爱财集团</span>
                 <span>前端领域贡献者</span>
               </div>
             </div>
