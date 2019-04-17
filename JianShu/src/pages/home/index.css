@@ -115,6 +115,7 @@ li a {
 /* 右侧 */
 .right-recommend {
   width: 295px;
+  height: 600px;
   margin-left: 15px;
   background: #fff;
 }

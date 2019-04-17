@@ -1,0 +1,1 @@
+export const GET_LEFT_LIST = 'home/get_left_list';
