@@ -1,44 +1,60 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { actionCreators } from '../store';
 
 class RightRecommend extends Component {
   render() {
     return (
       <div className="right-recommend">
-        <div className="right-recommend-ad" alt="广告">
-          广告位
+        <div className="right-recommend-ad">
+          <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=w7hismrh" target="_blank" rel="noopener noreferrer">
+            <img src={require('../../../resources/img/ad-ali.jpg')} alt="广告" />
+          </a>
+          <a href="https://cloud.tencent.com/act/southwest?fromSource=gwzcw.1083055.1083055.1083055&from=console&cps_key=49f647c99fce1a9f0b4e1eeb1be484c9" target="_blank" rel="noopener noreferrer">
+            <img src={require('../../../resources/img/ad-tencent.jpg')} alt="广告" />
+          </a>
         </div>
         <div className="right-recommend-author">
           <div className="right-recommend-author-top">掘金优秀作者</div>
           <div className="right-recommend-author-container">
-            <div className="right-recommend-author-item">
-              <img alt="头像" src="https://user-gold-cdn.xitu.io/2018/9/28/1661ee2d90741789?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
-              <div className="right-recommend-author-detail">
-                <span className="right-recommend-author-title">纳兰不是容若</span>
-                <span>前端开发</span>
-                <span>前端领域贡献者</span>
-              </div>
-            </div>
-            <div className="right-recommend-author-item">
-              <img alt="头像" src="https://lc-gold-cdn.xitu.io/ada965bd605a3b55371b.jpg?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
-              <div className="right-recommend-author-detail">
-                <span className="right-recommend-author-title">前端先锋</span>
-                <span>前端码农</span>
-                <span>前端、JavaScript、Node.js 领域贡献者</span>
-              </div>
-            </div>
-            <div className="right-recommend-author-item">
-              <img alt="头像" src="https://user-gold-cdn.xitu.io/2017/12/25/1608cf4df88d2841?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
-              <div className="right-recommend-author-detail">
-                <span className="right-recommend-author-title">HulkShen</span>
-                <span>前端工程师 @ 爱财集团</span>
-                <span>前端领域贡献者</span>
-              </div>
-            </div>
+            {
+              this.props.author.map((item) => {
+                return (
+                  <div className="right-recommend-author-item" key={item.get('id')}>
+                    <img alt="头像" src={item.get('author').get('avatarLarge')} />
+                    <div className="right-recommend-author-detail">
+                      <span className="right-recommend-author-title">{item.get('author').get('username')}</span>
+                      <span>{item.get('author').get('jobTitle')}</span>
+                      <span>{item.get('description')}</span>
+                    </div>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>
     )
   }
+
+  componentDidMount() {
+    this.props.getRightRecommendAuthor();
+  }
+
 }
 
-export default RightRecommend;
+const mapStateToProps = (state) => {
+  return {
+    author: state.get('home').get('rightRecommend')
+  }
+}
+
+const mapDispathToProps = (dispatch) => {
+  return {
+    getRightRecommendAuthor() {
+      dispatch(actionCreators.getRightRecommendAuthor());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(RightRecommend);

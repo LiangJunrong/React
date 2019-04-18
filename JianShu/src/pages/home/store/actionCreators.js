@@ -24,10 +24,16 @@ export const getRightRecommendAuthor = () => {
   return (dispatch) => {
     axios.get('/api/rightRecommendAuthor.json').then((res) => {
       if(res.data.code === 0) {
-        console.log(res);
+        const data = res.data.data.recommendationCard;
+        dispatch(setRightRecommendAuthor(data))
       }
     }).catch((error) => {
       console.log(error);
     })
   }
 }
+
+const setRightRecommendAuthor = (data) => ({
+  type: actionTypes.GET_RIGHT_RECOMMEND_AUTHOR,
+  data: fromJS(data),
+})
