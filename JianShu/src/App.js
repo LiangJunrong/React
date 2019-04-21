@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import Header from './common/header';
+import { Provider } from 'react-redux';
+import store from './store';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Hello React!
-      </div>
+      <Provider store={store} className="App">
+        <Header />
+      </Provider>
     );
   }
 }

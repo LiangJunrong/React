@@ -1,0 +1,22 @@
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 21px;
+  margin-right: 5px;
+}
+.icon-home {
+  background: url('./resources/img/icon-home.png') no-repeat center;
+  background-size: 100%;
+}
+.icon-write {
+  background: url('./resources/img/icon-write.png') no-repeat center;
+  background-size: 100%;
+}
+.icon-download {
+  background: url('./resources/img/icon-download.png') no-repeat center;
+  background-size: 100%;
+}
+.icon-search {
+  background: url('./resources/img/icon-search.png') no-repeat center;
+  background-size: 100%;
+}
