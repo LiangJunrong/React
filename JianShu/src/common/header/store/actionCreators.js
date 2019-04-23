@@ -10,7 +10,6 @@ export const searchBlur = () => ({
   type: actionTypes.SEARCH_BLUR
 })
 
-// 4. 在 actionCreators.js 中定义这两个方法：onMouseEnterHot 和 onMouseLeaveHot
 export const onMouseEnterHot = () => ({
   type: actionTypes.ON_MOUSE_ENTER_HOT,
 })
@@ -24,8 +23,8 @@ export const getList = () => {
     axios.get('/api/headerList.json').then( (res) => {
       if(res.data.code === 0) {
         const data = res.data.list;
-        // 由于数据太多，我们限制数据量为 15 先
-        data.length = 15;
+        // 2. 由于数据太多，我们之前限制数据量为 15，这里我们去掉该行代码
+        // data.length = 15;
         dispatch(changeList(data));
       }
     }).catch( (error) => {
@@ -36,5 +35,13 @@ export const getList = () => {
 
 const changeList = (data) => ({
   type: actionTypes.GET_LIST,
-  data: fromJS(data)
+  data: fromJS(data),
+  // 3. 我们在这里计算总页数
+  totalPage: Math.ceil(data.length / 10)
+})
+
+// 9. 定义 changePage 方法
+export const changePage = (page) => ({
+  type: actionTypes.CHANGE_PAGE,
+  page: page,
 })

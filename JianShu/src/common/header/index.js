@@ -34,29 +34,32 @@ class Header extends Component {
                 <input 
                   className={this.props.inputFocus ? 'input-active' : 'input-nor-active'}
                   placeholder="搜索"
-                  onFocus={this.props.searchFocus}
+                  // 1. 给 searchFocus 传递 list
+                  onFocus={() => this.props.searchFocus(this.props.list)}
                   onBlur={this.props.searchBlur}
                 />
               </CSSTransition>
               <i className={this.props.inputFocus ? 'icon icon-search icon-active' : 'icon icon-search'}></i>
-              {/* 8. 在判断中加多一个 this.props.mouseInHot，这样只要有一个为 true，它就不会消失 */}
               <div 
                 className={this.props.inputFocus || this.props.mouseInHot ? 'display-show header_center-left-hot-search' : 'display-hide header_center-left-hot-search'}
-                // 2. 设置移入为 onMouseEnterHot，移出为 onMouseLeaveHot
                 onMouseEnter={this.props.onMouseEnterHot}
                 onMouseLeave={this.props.onMouseLeaveHot}
               >
                 <div className="header_center-left-hot-search-title">
                   <span>热门搜索</span>
-                  <span>
-                    <i className="icon-change"></i>
-                    <span>换一批</span>
+                  <span onClick={() => this.props.changePage(this.props.page, this.props.totalPage, this.spinIcon)}>
+                    <i className="icon-change" ref={(icon) => {this.spinIcon = icon}}></i>
+                    <span className="span-change">换一批</span>
                   </span>
                 </div>
                 <div className="header_center-left-hot-search-content">
                   {
-                    this.props.list.map((item) => {
-                      return <span key={item}>{item}</span>
+                    this.props.list.map((item, index) => {
+                      if(index >= (this.props.page - 1) * 10 && index < this.props.page * 10) {
+                        return <span key={item}>{item}</span>
+                      } else {
+                        return '';
+                      }
                     })
                   }
                 </div>
@@ -88,27 +91,43 @@ const mapStateToProps = (state) => {
   return {
     inputFocus: state.get('header').get('inputFocus'),
     list: state.get('header').get('list'),
-    // 7. 在 index.js 中获取
     mouseInHot: state.get('header').get('mouseInHot'),
+    page: state.get('header').get('page'),
+    totalPage: state.get('header').get('totalPage'),
   }
 }
 
 const mapDispathToProps = (dispatch) => {
   return {
-    searchFocus() {
-      dispatch(actionCreators.getList());
+    searchFocus(list) {
+      // 2. 判断 list 的 size 是不是等于 0，是的话才请求数据（第一次），不是的话则不请求
+      if(list.size === 0) {
+        dispatch(actionCreators.getList());
+      }
       dispatch(actionCreators.searchFocus());
     },
     searchBlur() {
       dispatch(actionCreators.searchBlur());
     },
-    // 3. 定义 onMouseEnterHot 和 onMouseLeaveHot 方法
     onMouseEnterHot() {
       dispatch(actionCreators.onMouseEnterHot());
     },
     onMouseLeaveHot() {
       dispatch(actionCreators.onMouseLeaveHot());
     },
+    changePage(page, totalPage, spinIcon) {
+      if(spinIcon.style.transform === 'rotate(360deg)') {
+        spinIcon.style.transform = 'rotate(0deg)';
+      } else {
+        spinIcon.style.transform = 'rotate(360deg)';
+      }
+      if(page === totalPage) {
+        page = 1;
+        dispatch(actionCreators.changePage(page));
+      } else {
+        dispatch(actionCreators.changePage(page));
+      }
+    }
   }
 }
 

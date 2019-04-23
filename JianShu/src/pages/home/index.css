@@ -1,0 +1,64 @@
+/* 主体 */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+.main-container {
+  display: flex;
+}
+
+/* 顶部 */
+.top-nav {
+  position: fixed;
+  left: 0;
+  top: 59px;
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  z-index: 100;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  font-size: 14px;
+  background: #fff;
+}
+.top-nav-list {
+  display: flex;
+  width: 960px;
+  margin: auto;
+  position: relative;
+}
+.top-nav-list-item a {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  color: #71777c;
+  padding-right: 12px;
+}
+.active a {
+  color: #007fff;
+}
+.top-nav-list-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* 主内容 */
+.main-container {
+  margin-top: 120px;
+}
+
+/* 左侧 */
+.left-list {
+  width: 650px;
+  height: 1000px;
+  background: #fff;
+}
+
+/* 右侧 */
+.right-recommend {
+  width: 295px;
+  height: 1000px;
+  margin-left: 15px;
+  background: #fff;
+}
