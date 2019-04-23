@@ -1,12 +1,8 @@
-const defaultState = {
-  inputBlur: true
-};
+import { combineReducers } from 'redux-immutable';
+import { reducer as headerReducer } from '../common/header/store';
 
-export default (state = defaultState, action) => {
-  if(action.type === 'search_focus_or_blur') {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState.inputBlur = !newState.inputBlur
-    return newState;
-  }
-  return state;
-}
+const reducer =  combineReducers({
+  header: headerReducer
+})
+
+export default reducer;

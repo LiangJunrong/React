@@ -6,10 +6,14 @@ header {
   border-bottom: 1px solid #ccc;
   font-size: 17px;
 }
-.headef_left-img {
+
+/* 头部左边 */
+.header_left-img {
   width: 100px;
   height: 56px;
 }
+
+/* 头部中间 */
 .header_center {
   width: 1000px;
   margin: 0 auto;
@@ -21,16 +25,21 @@ header {
   display: flex;
   align-items: center;
 }
+
+/* 头部中间左部 */
 .header_center-left {
   display: flex;
 }
+
+/* 头部中间左部 - 首页 */
 .header_center-left-home {
   color: #ea6f5a;
 }
+
+/* 头部中间左部 - 搜索框 */
 .header_center-left-search {
   position: relative;
 }
-/* 3. 编写对应的 CSS 样式 */
 .slide-enter {
   transition: all .2s ease-out;
 }
@@ -43,10 +52,9 @@ header {
 .silde-exit-active {
   width: 240px;
 }
-/* 3. 结束 */
 .header_center-left-search input {
   width: 240px;
-  padding: 0 40px 0 20px;
+  padding: 0 45px 0 20px;
   height: 38px;
   font-size: 14px;
   border: 1px solid #eee;
@@ -56,7 +64,7 @@ header {
 .header_center-left-search .input-active {
   width: 280px;
 }
-.header_center-left-search i {
+.header_center-left-search .icon-search {
   position: absolute;
   top: 8px;
   right: 10px;
@@ -67,13 +75,75 @@ header {
   border-radius: 15px;
   border: 1px solid #ea6f5a;
 }
+
+/* 头部中间左部 - 热搜 */
 .header_center-left-search .icon-active:hover {
   cursor: pointer;
 }
+.header_center-left-hot-search:before {
+  content: "";
+  left: 27px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  top: -5px;
+  z-index: -1;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,.2);
+}
+.header_center-left-hot-search {
+  position: absolute;
+  width: 250px;
+  left: 0;
+  top: 125%;
+  padding: 15px;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.header_center-left-hot-search-title {
+  display: flex;
+  justify-content: space-between;
+  color: #969696;
+}
+.header_center-left-hot-search-change {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-change {
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  background: url('../../resources/img/icon-change.png') no-repeat center;
+  background-size: 100%;
+}
+.icon-change:hover {
+  cursor: pointer;
+}
+.header_center-left-hot-search-content span {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #787878;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.header_center-left-hot-search-content span:hover {
+  cursor: pointer;
+}
+
+/* 头部中间右部 */
 .header_center-right {
   display: flex;
   color: #969696;
 }
+
+/* 头部右边 */
 .header_right-register, .header_right-write {
   width: 80px;
   text-align: center;
