@@ -1,16 +1,16 @@
 {
   "name": "jianshu",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.16.1",
     "axios": "^0.18.0",
-    "immutable": "^4.0.0-rc.12",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-redux": "^7.0.2",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-transition-group": "^4.0.0",
+    "react-transition-group": "^2.9.0",
     "redux": "^4.0.1",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0"
