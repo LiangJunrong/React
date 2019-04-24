@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const arr1 = ['jsliang', 'test']
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +19,13 @@ function App() {
         >
           Learn React
         </a>
+        {
+          arr1.map(item => {
+            return (
+              <p>{item}</p>
+            )
+          })
+        }
       </header>
     </div>
   );
