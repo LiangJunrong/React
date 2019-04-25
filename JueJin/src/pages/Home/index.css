@@ -1,0 +1,30 @@
+.home {
+  
+}
+.home-container {
+  display: flex;
+}
+nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background: deepskyblue;
+  border: 1px solid black;
+}
+.home-container {
+  margin-top: 104px;
+}
+section {
+  width: 70%;
+  height: 300px;
+  background: greenyellow;
+  border: 1px solid black;
+}
+aside {
+  width: 30%;
+  height: 300px;
+  background: green;
+  border: 1px solid black;
+}
