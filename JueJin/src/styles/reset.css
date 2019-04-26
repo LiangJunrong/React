@@ -16,7 +16,7 @@ th, td /* 表格元素 - table elements */ {
 
 /** 设置默认字体 - setting the default font **/
 body, button, input, select, textarea {
-    font: 16px/1.5 '黑体', Helvetica, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 }
 h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-size: 100%; }
 
@@ -27,8 +27,8 @@ ul, ol { list-style: none; }
 a, a:hover { text-decoration: none; }
 
 /** 重置表单元素 - reset the form element **/
-button { cursor: pointer; }
-input { font-size: 16px; outline: none; }
+button { cursor: pointer; margin: 0; padding: 0; border: 1px solid transparent; outline: none }
+input { font-size: 16px; outline: none; border: none; }
 
 /** 重置表格元素 - reset the table element **/
 table { border-collapse: collapse; border-spacing: 0; }
@@ -58,6 +58,6 @@ div, input { box-sizing: border-box; }
 }
 
 /** 设置input的placeholder - set input placeholder **/
-input::-webkit-input-placeholder { color: #919191; font-size: .32rem } /* Webkit browsers */
-input::-moz-placeholder { color: #919191; font-size: .32rem } /* Mozilla Firefox */
-input::-ms-input-placeholder { color: #919191; font-size: .32rem } /* Internet Explorer */
+input::-webkit-input-placeholder { color: #919191; font-size: 14px; } /* Webkit browsers */
+input::-moz-placeholder { color: #919191; font-size: 14px; } /* Mozilla Firefox */
+input::-ms-input-placeholder { color: #919191; font-size: 14px; } /* Internet Explorer */

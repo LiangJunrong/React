@@ -4,12 +4,12 @@ import Nav from './components/Nav';
 import LeftList from './components/leftList';
 import RightRecommend from './components/RightRecommend';
 
-class Home extends Component {
+class TimeLine extends Component {
   render() {
     return (
-      <div className="home">
+      <div className="timeline">
         <Nav />
-        <div className="home-container">
+        <div className="timeline-container">
           <LeftList />
           <RightRecommend />
         </div>
@@ -18,4 +18,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default TimeLine;

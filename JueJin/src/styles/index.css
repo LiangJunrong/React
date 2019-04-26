@@ -1,6 +1,9 @@
 html {
   background: #f4f5f5;
 }
+a {
+  color: #71777c;
+}
 #root {
   position: relative;
   margin: 0 auto;
