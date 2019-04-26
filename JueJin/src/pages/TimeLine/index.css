@@ -37,6 +37,18 @@
   padding-right: 0;
 }
 
+/* 返回顶部 */
+.scroll-to-top {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  background: deepskyblue;
+  color: #fff;
+}
+
 
 /* 内容 */
 .timeline-container {

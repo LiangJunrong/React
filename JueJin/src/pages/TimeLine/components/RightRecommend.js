@@ -4,7 +4,7 @@ class RightRecommend extends Component {
   render() {
     return (
       <aside className="right-recommend">
-      
+        
       </aside>
     )
   }
