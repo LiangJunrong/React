@@ -1,43 +1,43 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Nav extends Component {
   render() {
     return (
       <nav className="top-nav">
         <ul className="top-nav-list">
-          <li className="top-nav-list-item active">
-            <Link to="tuijian">推荐</Link>
+          <li className="top-nav-list-item">
+            <NavLink to="/timeline/recommended" activeClassName="active">推荐</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="guanzhu">关注</Link>
+            <NavLink to="/timeline/following" activeClassName="active">关注</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="houduan">后端</Link>
+            <NavLink to="/timeline/backend" activeClassName="active">后端</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="qianduan">前端</Link>
+            <NavLink to="/timeline/frontend" activeClassName="active">前端</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="anzhuo">Android</Link>
+            <NavLink to="/timeline/android" activeClassName="active">Android</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="ios">IOS</Link>
+            <NavLink to="/timeline/ios" activeClassName="active">IOS</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="rengongzhineng">人工智能</Link>
+            <NavLink to="/timeline/ai" activeClassName="active">人工智能</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="kaifagongju">开发工具</Link>
+            <NavLink to="/timeline/freebie" activeClassName="active">开发工具</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="daimarensheng">代码人生</Link>
+            <NavLink to="/timeline/career" activeClassName="active">代码人生</NavLink>
           </li>
           <li className="top-nav-list-item">
-            <Link to="yuedu">阅读</Link>
+            <NavLink to="/timeline/article" activeClassName="active">阅读</NavLink>
           </li>
           <li className="top-nav-list-item top-nav-list-right">
-            <Link to="biaoqianguanli">标签管理</Link>
+            <NavLink to="/subscribe/subscribed" activeClassName="active">标签管理</NavLink>
           </li>
         </ul>
       </nav>

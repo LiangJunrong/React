@@ -1,14 +1,19 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import TimeLine from './pages/TimeLine';
+import NotFound from './pages/404';
 
 function App() {
   return (
     <Fragment>
       <BrowserRouter>
         <Header />
-        <Route path="/" exact component={TimeLine}></Route>
+        <Switch>
+          <Redirect from="/" to="/timeline" exact />
+          <Route path="/timeline" component={TimeLine}></Route>
+          <Route component={NotFound}></Route>
+        </Switch>
       </BrowserRouter>
     </Fragment>
   );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './index.css';
 import Logo from '../../assets/img/logo.svg';
 import Search from '../../assets/img/icon_search.svg';
@@ -12,19 +12,19 @@ class Header extends Component {
           <img className="header-container-logo" alt="Logo" src={Logo} />
           <ul className="header-container-nav">
             <li>
-              <Link to="/">首页</Link>
+              <NavLink activeClassName="header-container-nav-active" to="/timeline">首页</NavLink>
             </li>
             <li>
-              <Link to="">沸点</Link>
+              <NavLink activeClassName="header-container-nav-active" to="/pins">沸点</NavLink>
             </li>
             <li>
-              <Link to="">话题</Link>
+              <NavLink activeClassName="header-container-nav-active" to="/topics">话题</NavLink>
             </li>
             <li>
-              <Link to="">小册</Link>
+              <NavLink activeClassName="header-container-nav-active" to="/books">小册</NavLink>
             </li>
             <li>
-              <Link to="">活动</Link>
+              <NavLink activeClassName="header-container-nav-active" to="/events">活动</NavLink>
             </li>
           </ul>
           <ul className="header-container-right">

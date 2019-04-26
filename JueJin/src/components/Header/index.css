@@ -7,6 +7,7 @@ header {
   height: 59px;
   background: #fff;
   border-bottom: 1px solid #f1f1f1;
+  z-index: 99;
 }
 .header-container {
   display: flex;
@@ -26,6 +27,9 @@ header {
 /* ul 列表 - 左侧 */
 .header-container-nav {
   display: flex;
+}
+.header-container-nav-active {
+  color: #007fff;
 }
 .header-container-nav li {
   width: 68px;
