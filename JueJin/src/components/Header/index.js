@@ -35,14 +35,20 @@ class Header extends Component {
               </form>
             </li>
             <li className="header-container-add">
-              <button className="add-article">写文章</button>
+              <div className="header-container-add-group">
+                <button className="add-article">写文章</button>
+                <div>
+                  <button className="add-more"></button>
+                </div>
+              </div>
             </li>
-            <li>
-              <Link to="">通知</Link>
-            </li>
-            <li>
-              <Link to="">用户</Link>
-            </li>
+            <Link to="" className="header-container-notice">
+              <i className="icon icon-notice"></i>
+              <span>4.3K</span>
+            </Link>
+            <Link to="" className="header-container-user">
+              <img alt="头像" src="https://leancloud-gold-cdn.xitu.io/GBwwQOuUmqYmWWnSp5EjY3HTouKn5fAd0Ly5XHkO?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
+            </Link>
           </ul>
         </div>
       </header>

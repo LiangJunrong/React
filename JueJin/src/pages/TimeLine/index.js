@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './index.css';
 import Nav from './components/Nav';
-import LeftList from './components/leftList';
+import LeftList from './components/LeftList';
 import RightRecommend from './components/RightRecommend';
 
 class TimeLine extends Component {

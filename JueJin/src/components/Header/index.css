@@ -4,8 +4,9 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 59px;
   background: #fff;
+  border-bottom: 1px solid #f1f1f1;
 }
 .header-container {
   display: flex;
@@ -29,11 +30,14 @@ header {
 .header-container-nav li {
   width: 68px;
   height: 60px;
+  text-align: center;
 }
 
 /* ul 列表 - 右侧 */
 .header-container-right {
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 /* 搜索框 */
 .header-container-search {
@@ -50,12 +54,14 @@ header {
   width: 130px;
   height: 32px;
   border: 1px solid rgba(151, 151, 151, 0.2);
+  border-radius: 2px;
 }
 .header-container-search input {
   width: 130px;
   height: 32px;
   color: rgb(102, 102, 102);
   padding: 0 28px 0 12px;
+  background-color: rgba(227,231,236,.1);
 }
 /* Search 图标 */
 .icon-search {
@@ -67,11 +73,87 @@ header {
 }
 /* 写文章 */
 .header-container-add {
+  display: flex;
+  align-items: center;
   width: 80px;
   height: 60px;
   padding: 0 14px;
 }
+.header-container-add-group {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 32px;
+}
 .add-article {
-  background-color: rgb(8, 118, 228);
+  width: 64px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: #0876e4;
   color: #fff;
+}
+.header-container-add-group div {
+  width: 16px;
+  text-align: center;
+  height: 32px;
+  line-height: 26px;
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 1px solid hsla(0,0%,100%,.1);
+  cursor: pointer;
+  background: #0876e4;
+}
+.add-more {
+  width: 0;
+  height: 0;
+  border-width: 3px 3px 0;
+  border-style: solid;
+  border-color: #fff #0876e4 #0876e4 ;/* 红 透明 透明 */
+}
+/* 通知 */
+.header-container-notice {
+  width: 46px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-container-notice i {
+  width: 20px;
+  height: 36px;
+}
+.header-container-notice span {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 46px;
+  text-align: center;
+  height: 26px;
+  line-height: 24px;
+  position: absolute;
+  right: -20px;
+  top: 6px;
+  border-radius: 23px;
+  border: 2px solid #fff;
+  font-size: 12px;
+  word-break: normal;
+  color: #f1f1f1;
+  background-color: #007fff;
+}
+/* 用户头像 */
+.header-container-user {
+  width: 44px;
+  text-align: right;
+  height: 60px;
+  margin-left: 10px;
+}
+.header-container-user img {
+  width: 30px;
+  height: 30px;
+  border-radius: 44px;
 }

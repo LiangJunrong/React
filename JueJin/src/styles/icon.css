@@ -1,0 +1,7 @@
+.icon {
+  display: inline-block;
+}
+.icon-notice {
+  background: url('../assets/img/icon_notice.png') no-repeat center;
+  background-size: 100%;
+}
