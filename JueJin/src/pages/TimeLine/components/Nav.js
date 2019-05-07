@@ -7,7 +7,7 @@ class Nav extends Component {
       <nav className="top-nav">
         <ul className="top-nav-list">
           <li className="top-nav-list-item">
-            <NavLink to="/timeline/recommended" activeClassName="active">推荐</NavLink>
+            <NavLink to="/timeline/recommend" activeClassName="active">推荐</NavLink>
           </li>
           <li className="top-nav-list-item">
             <NavLink to="/timeline/following" activeClassName="active">关注</NavLink>

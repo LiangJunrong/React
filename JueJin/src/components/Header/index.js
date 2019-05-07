@@ -12,7 +12,7 @@ class Header extends Component {
           <img className="header-container-logo" alt="Logo" src={Logo} />
           <ul className="header-container-nav">
             <li>
-              <NavLink activeClassName="header-container-nav-active" to="/timeline">首页</NavLink>
+              <NavLink activeClassName="header-container-nav-active" to="/timeline/recommend">首页</NavLink>
             </li>
             <li>
               <NavLink activeClassName="header-container-nav-active" to="/pins">沸点</NavLink>

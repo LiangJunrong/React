@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import './index.css';
 import Loadable from 'react-loadable';
-// import Nav from './components/Nav';
-// import LeftList from './components/LeftList';
-// import RightRecommend from './components/RightRecommend';
 
 const Loading = () => <div>Loading...</div>;
 

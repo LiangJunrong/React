@@ -12,8 +12,8 @@ function App() {
         <Header />
         <ScrollToTop>
           <Switch>
-            <Redirect from="/" to="/timeline" exact />
-            <Route path="/timeline" component={TimeLine}></Route>
+            <Redirect from="/" to="/timeline/recommend" exact />
+            <Route path="/timeline/recommend" component={TimeLine}></Route>
             <Route component={NotFound}></Route>
           </Switch>
         </ScrollToTop>

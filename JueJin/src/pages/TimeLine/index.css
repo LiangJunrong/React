@@ -61,6 +61,67 @@ section {
   width: 700px;
   height: 3000px;
   background: #fff;
+  font-size: 14px;
+}
+.left-list-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15.6px 12px;
+  border-bottom: 1px solid hsla(0,0%,59.2%,.1);
+}
+.left-list-nav-active {
+  color: #007fff;
+}
+.left-list-nav-left a {
+  display: inline-block;
+  width: 56px;
+  text-align: center;
+}
+.left-list-nav-left-split {
+  color: hsla(0,0%,59.2%,.2);
+}
+.left-list-nav-right a {
+  display: inline-block;
+  width: 72px;
+  text-align: center;
+}
+.left-list-nav-right-split {
+  color: hsla(0,0%,59.2%,.8);
+}
+.left-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid hsla(0,0%,59.2%,.1);
+}
+.left-list-item img {
+  width: 60px;
+  height: 60px;
+}
+.left-list-item-split {
+  display: inline-block;
+  width: 10px;
+  text-align: center;
+}
+.left-list-item-detail {
+  font-size: 13px;
+}
+.left-list-item h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.left-list-item-action {
+  margin-top: 10px;
+}
+.left-list-item-action button {
+  background: #fff;
+  border: 1px solid #edeeef;
+  padding: 0 10px;
+}
+.left-list-item-action .icon {
+  width: 18px;
+  height: 18px;
 }
 
 /* 右侧侧边栏 */
