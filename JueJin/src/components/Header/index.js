@@ -44,7 +44,7 @@ class Header extends Component {
             </li>
             <Link to="" className="header-container-notice">
               <i className="icon icon-notice"></i>
-              <span>4.3K</span>
+              <span>5.2K</span>
             </Link>
             <Link to="" className="header-container-user">
               <img alt="头像" src="https://leancloud-gold-cdn.xitu.io/GBwwQOuUmqYmWWnSp5EjY3HTouKn5fAd0Ly5XHkO?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1" />
